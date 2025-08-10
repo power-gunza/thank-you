@@ -249,6 +249,78 @@
             border: 2px solid #333;
         }
         
+        /* 스피커 이미지 스타일 */
+        .speaker-link {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .speaker-img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: 3px solid #4169E1;
+            border-radius: 0;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .speaker-link:hover .speaker-img {
+            transform: scale(1.05);
+            box-shadow: 5px 5px 0px #87CEEB;
+        }
+
+        .click-hint {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFFF00;
+            padding: 5px 15px;
+            color: #333;
+            font-size: 0.9em;
+            font-weight: 700;
+            border: 2px solid #333;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .speaker-link:hover .click-hint {
+            opacity: 1;
+        }
+
+        /* 기존 placeholder 제거하고 이미지 없을 때만 표시 */
+        .speaker-img-placeholder {
+            display: none;
+        }
+
+        /* 이미지 로딩 실패시 대체 */
+        .speaker-img:not([src]), 
+        .speaker-img[src=""],
+        .speaker-img[src="스피커이미지URL"] {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(135deg, #87CEEB, #B0E0E6);
+            border: 2px dashed #4169E1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .speaker-img:not([src])::after,
+        .speaker-img[src=""]::after,
+        .speaker-img[src="스피커이미지URL"]::after {
+            content: "🔊";
+            font-size: 4em;
+            color: white;
+        }
+
+
+
+
         /* 후원자 섹션 */
         .thanks-container {
             background: rgba(255, 255, 255, 0.95);
@@ -361,6 +433,77 @@
             overflow: hidden;
         }
         
+        /* 스피커 이미지 스타일 */
+        .speaker-link {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .speaker-img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border: 3px solid #4169E1;
+            border-radius: 0;
+            transition: all 0.3s;
+            display: block;
+        }
+
+        .speaker-link:hover .speaker-img {
+            transform: scale(1.05);
+            box-shadow: 5px 5px 0px #87CEEB;
+        }
+
+        .click-hint {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFFF00;
+            padding: 5px 15px;
+            color: #333;
+            font-size: 0.9em;
+            font-weight: 700;
+            border: 2px solid #333;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .speaker-link:hover .click-hint {
+            opacity: 1;
+        }
+
+        /* 기존 placeholder 제거하고 이미지 없을 때만 표시 */
+        .speaker-img-placeholder {
+            display: none;
+        }
+
+        /* 이미지 로딩 실패시 대체 */
+        .speaker-img:not([src]), 
+        .speaker-img[src=""],
+        .speaker-img[src="스피커이미지URL"] {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(135deg, #87CEEB, #B0E0E6);
+            border: 2px dashed #4169E1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .speaker-img:not([src])::after,
+        .speaker-img[src=""]::after,
+        .speaker-img[src="스피커이미지URL"]::after {
+            content: "🔊";
+            font-size: 4em;
+            color: white;
+        }
+
+
+
         .meter-fill {
             background: repeating-linear-gradient(
                 90deg,
@@ -507,13 +650,18 @@
         <div class="speaker-showcase">
             <h2 class="speaker-title">★ 바로 이것 ★</h2>
             <div class="speaker-img-container">
-                <div class="speaker-img-placeholder">
-                    🔊
-                    <span class="speaker-label">NEW SPEAKER!</span>
-                </div>
+                <a href="https://github.com/power-gunza/thank-you/blob/main/KakaoTalk_Image_2025-08-10-13-37-03_001.jpeg?raw=true" target="_blank" class="speaker-link">
+                    <img src="https://github.com/power-gunza/thank-you/blob/main/KakaoTalk_Image_2025-08-10-13-37-03_001.jpeg?raw=true" alt="새 스피커" class="speaker-img">
+                    <div class="click-hint">클릭하면 크게 보여요!</div>
+                </a>
             </div>
+            <div class="speaker-img-container">
+                <a href="https://github.com/power-gunza/thank-you/blob/main/KakaoTalk_Image_2025-08-10-13-37-04_002.jpeg?raw=true" target="_blank" class="speaker-link">
+                    <img src="https://github.com/power-gunza/thank-you/blob/main/KakaoTalk_Image_2025-08-10-13-37-04_002.jpeg?raw=true" alt="새 스피커" class="speaker-img">
+                    <div class="click-hint">클릭하면 크게 보여요!</div>
+                </a>
+            </div>            
             <p style="margin-top: 40px; color: #4682B4; font-size: 1.2em;">
-                [여기에 스피커 사진 넣기]<br>
                 음질 깡패 / 베이스 폭탄 / 감성 충만
             </p>
         </div>
@@ -611,6 +759,7 @@
                 매일 좋은 음악 들으면서<br>
                 여러분의 따뜻한 마음을 떠올릴게요<br><br>
                 
+                언제든 음악들으러 놀러오세요<br><br>
                 정말 정말 사랑합니다 💙<br>
                 - 제형 올림 -
             </p>
