@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 감사합니다 - 제형이의 스피커 이야기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .music-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .story-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .story-title {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .story-text {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        .speaker-image {
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .thanks-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .thanks-title {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        
+        .supporters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .supporter-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        .supporter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .supporter-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .supporter-name {
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        
+        .supporter-desc {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .happiness-meter {
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .meter-title {
+            color: #764ba2;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .meter-bar {
+            background: #e0e0e0;
+            border-radius: 50px;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .meter-fill {
+            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+            height: 100%;
+            width: 0;
+            border-radius: 50px;
+            animation: fillBar 2s ease-out forwards;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+        }
+        
+        @keyframes fillBar {
+            to {
+                width: 100%;
+            }
+        }
+        
+        .meter-text {
+            color: white;
+            font-weight: bold;
+        }
+        
+        .final-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .final-message h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        
+        .final-message p {
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        
+        .music-notes {
+            position: fixed;
+            font-size: 20px;
+            animation: float 10s infinite linear;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        @keyframes float {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            to {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .supporters {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="music-notes" style="left: 10%; animation-delay: 0s;">🎵</div>
+    <div class="music-notes" style="left: 30%; animation-delay: 2s;">🎶</div>
+    <div class="music-notes" style="left: 50%; animation-delay: 4s;">🎵</div>
+    <div class="music-notes" style="left: 70%; animation-delay: 6s;">🎶</div>
+    <div class="music-notes" style="left: 90%; animation-delay: 8s;">🎵</div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="music-icon">🎧</div>
+            <h1>드디어 음악이 돌아왔습니다!</h1>
+            <p class="subtitle">여러분 덕분에 완성된 제형이의 스피커 이야기</p>
+        </div>
+        
+        <div class="story-section">
+            <h2 class="story-title">
+                <span>📖</span>
+                <span>이야기의 시작</span>
+            </h2>
+            <p class="story-text">
+                한 달 전, 저는 7만원짜리 스피커를 개조하다가... 망가뜨렸습니다 😅<br><br>
+                주말과 퇴근 후 유일한 낙이었던 음악 감상이 사라지니, 삶이 정말 무료해졌어요.<br>
+                업그레이드할까? 싼 거 또 살까? 고민만 하다가 시간이 흘러갔죠.<br><br>
+                그러다 결심했습니다. 제대로 된 스피커를 사자!<br>
+                하지만 혼자서는 부담스러운 가격... 그래서 여러분께 도움을 요청했습니다.
+            </p>
+        </div>
+        
+        <div class="thanks-section">
+            <h2 class="thanks-title">💝 십시일반, 마음을 모아주신 분들</h2>
+            
+            <div class="supporters">
+                <div class="supporter-card" style="animation-delay: 0.1s;">
+                    <div class="supporter-icon">👨‍👩‍👦</div>
+                    <div class="supporter-name">사랑하는 엄마, 아빠, 동생</div>
+                    <div class="supporter-desc">언제나 든든한 가족</div>
+                </div>
+                
+                <div class="supporter-card" style="animation-delay: 0.2s;">
+                    <div class="supporter-icon">🏔️</div>
+                    <div class="supporter-name">은경</div>
+                    <div class="supporter-desc">강릉에서도 응원해준 친한 친구</div>
+                </div>
+                
+                <div class="supporter-card" style="animation-delay: 0.3s;">
+                    <div class="supporter-icon">💫</div>
+                    <div class="supporter-name">그리고...</div>
+                    <div class="supporter-desc">모든 소중한 분들</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="story-section">
+            <h2 class="story-title">
+                <span>🔊</span>
+                <span>그리고 지금!</span>
+            </h2>
+            <p class="story-text">
+                여러분이 보태주신 마음들이 모여서 드디어 스피커를 샀습니다!<br>
+                설치도 완료했고, 이틀 동안 정말 열심히 들었어요 🎵<br><br>
+                음질이... 와... 진짜 다르더라고요.<br>
+                베이스는 깊고 풍부하고, 고음은 맑고 선명하고!<br>
+                음악이 이렇게 좋은 거였나 싶을 정도로 행복합니다.
+            </p>
+        </div>
+        
+        <div class="happiness-meter">
+            <div class="meter-title">🌈 현재 행복 지수</div>
+            <div class="meter-bar">
+                <div class="meter-fill">
+                    <span class="meter-text">100% 만족!</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="final-message">
+            <h3>진심으로 감사합니다 🙏</h3>
+            <p>
+                3만원, 5만원... 각자의 마음을 보태주신 덕분에<br>
+                제가 다시 음악과 함께 할 수 있게 되었어요.<br><br>
+                앞으로 이 스피커로 좋은 음악 들으며<br>
+                여러분께 받은 따뜻한 마음을 기억하겠습니다.<br><br>
+                정말 정말 감사해요! 🩵
+            </p>
+        </div>
+    </div>
+</body>
+</html>
