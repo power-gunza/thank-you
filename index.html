@@ -432,6 +432,24 @@
             position: relative;
             overflow: hidden;
         }
+
+        .meter-fill {
+            background: repeating-linear-gradient(
+                90deg,
+                #4169E1 0px,
+                #4169E1 10px,
+                #87CEEB 10px,
+                #87CEEB 20px
+            );
+            height: 100%;
+            width: 0;  /* 초기값 0 유지 */
+            position: relative;
+        }
+        
+        /* 애니메이션은 클래스 추가될 때만 실행 */
+        .meter-fill.animate-fill {
+            animation: fillHappiness 3s ease-out forwards;
+        }
         
         /* 스피커 이미지 스타일 */
         .speaker-link {
@@ -712,7 +730,7 @@
                     그리고 올해도 생일 축하를 해주시고<br>
                     항상 멋진 우정을 나눠주시는<br>
                     나의 모든 친구들~~~<br>
-                    <span style="font-size: 1.5em; font-weight: 700;">바로 너 !</span> ☜(ﾟヮﾟ☜)
+                    <span style="font-size: 1.5em; font-weight: 700;">! 바로 너 !</span> ☜(ﾟヮﾟ☜)
                 </p>
             </div>
         </div>
@@ -723,7 +741,7 @@
             <div class="pixel-icon" style="bottom: -20px; right: 40px;">🎉</div>
             <h2 class="story-title">
                 <span>▶</span>
-                <span>Day 32 ~ NOW : 음악과 함께!</span>
+                <span>NOW : 음악과 함께!</span>
             </h2>
             <p class="story-text">
                 드디어 스피커 구매 & 설치 완료! ヽ(´▽`)/<br>
@@ -767,5 +785,31 @@
         
         <div class="divider">☆ ★ ☆ ★ ☆</div>
     </div>
+<script>
+// Intersection Observer로 스크롤 감지
+const observerOptions = {
+    threshold: 0.5, // 요소가 50% 보일 때 실행
+    rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // 애니메이션 클래스 추가
+            entry.target.classList.add('animate-fill');
+            // 한 번만 실행하고 관찰 중지
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// 페이지 로드 후 실행
+window.addEventListener('DOMContentLoaded', () => {
+    const meterFill = document.querySelector('.meter-fill');
+    if (meterFill) {
+        observer.observe(meterFill);
+    }
+});
+</script>        
 </body>
 </html>
